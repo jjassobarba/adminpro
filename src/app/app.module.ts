@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { PagesComponent } from './pages/pages.component';
 import { IncrementadorComponent } from './components/incrementador/incrementador.component';
+import { ServiceModule } from './services/service.module';
 
 
 
@@ -18,13 +19,13 @@ import { IncrementadorComponent } from './components/incrementador/incrementador
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    // IncrementadorComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTES,
     PagesModule,
-    FormsModule
+    FormsModule,
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
