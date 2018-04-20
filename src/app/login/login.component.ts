@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.auth2.attachClickHandler( element, {}, googleUser => {
       // tslint:disable-next-line:prefer-const
       let token = googleUser.getAuthResponse().id_token;
-      this._usuarioService.loginGoogle(token).subscribe(resp => this.router.navigate(['/dashboard']));
+      this._usuarioService.loginGoogle(token).subscribe(resp => window.location.href = '/dashboard');
     });
   }
 
