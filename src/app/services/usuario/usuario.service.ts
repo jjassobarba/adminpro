@@ -15,6 +15,11 @@ export class UsuarioService {
     this.cargarStorage();
   }
 
+  cargarUsuarios(desde: number = 0) {
+    const URL = URL_SERVICIOS + '/usuario?desde=' + desde;
+    return this.http.get(URL);
+  }
+
   crearUsuario(usuario: Usuario) {
     const url = URL_SERVICIOS + '/usuario';
 
