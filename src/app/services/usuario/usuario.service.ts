@@ -15,6 +15,19 @@ export class UsuarioService {
     this.cargarStorage();
   }
 
+  borrarUsuario(id: string) {
+    const URL = URL_SERVICIOS + '/usuario/' + id + '?token=' + this.token;
+    return this.http.delete(URL).map(resp => {
+      swal('Usuario borrado', 'El usuario ha sido borrado correctamente', 'success');
+      return true;
+    });
+  }
+
+  buscarUsuarios(termino: string) {
+    const URL = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + termino;
+    return this.http.get(URL).map((resp: any) => resp.usuarios);
+  }
+
   cargarUsuarios(desde: number = 0) {
     const URL = URL_SERVICIOS + '/usuario?desde=' + desde;
     return this.http.get(URL);
@@ -33,7 +46,9 @@ export class UsuarioService {
     const URL = URL_SERVICIOS + '/usuario/' + usuario._id + '?token=' + this.token;
     return this.http.put(URL, usuario)
                     .map((resp: any) => {
-                      this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+                      if (usuario._id === this.usuario._id) {
+                        this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+                      }
                       swal('Usuario actualizado', usuario.nombre, 'success');
                       return true;
                     });
