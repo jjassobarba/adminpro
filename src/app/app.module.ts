@@ -12,13 +12,11 @@ import { PagesComponent } from './pages/pages.component';
 import { IncrementadorComponent } from './components/incrementador/incrementador.component';
 import { ServiceModule } from './services/service.module';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
